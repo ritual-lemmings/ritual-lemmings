@@ -40,10 +40,15 @@ function bootMaster(data) {
       container.appendChild(endButton);
 
       endButton.addEventListener('click', function() {
-        // TODO: inject game win call here!
-        socket.emit('end');
+        endGame();
       });
     });
+  }
+
+  function endGame() {
+    // TODO: inject game win call here!
+    // FIXME: add who won the game to notify player ;)
+    socket.emit('end');
   }
 
   addStartButton();
