@@ -9,7 +9,26 @@ html
 
       socket.on('boot', function (data) {
         console.log('I am', data.type);
+
+        if (data.type === 'master') {
+          bootMaster();
+        } else {
+          bootSlave();
+        }
       });
+
+      function bootMaster() {
+        socket.on('input', function (data) {
+          console.log('input', data);
+        });
+      }
+
+      function bootSlave() {
+        socket.on('game', function (data) {
+          console.log('game', data);
+        });
+      }
+
 
       function meep() {
         console.log('sending meep...');

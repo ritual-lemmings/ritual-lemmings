@@ -5,6 +5,9 @@ import serve from 'koa-static';
 import Socket from 'socket.io';
 import jade from 'jade';
 
+import Master from './lib/master';
+import Slave from './lib/slave';
+
 
 const app = new Koa();
 
@@ -21,11 +24,9 @@ const io = Socket(server);
 io.on('connection', (socket) => {
   socket.isFirst = io.engine.clientsCount === 1;
   if (socket.isFirst) {
-    console.log('master connected');
-    socket.emit('boot', { type: 'master' });
+    new Master(socket);
   } else {
-    console.log('client connected');
-    socket.emit('boot', { type: 'slave' });
+    new Slave(socket);
   }
   socket.on('nachricht', (data) => {
     console.log('nachricht', data);
