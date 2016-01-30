@@ -19,6 +19,9 @@ function bootMaster(data) {
 function bootSlave(data) {
   console.log('My color is', data.clientColor);
 
+  var html = document.querySelector('html');
+  html.style.backgroundColor = data.clientColor;
+
   socket.on('game', function (data) {
     console.log('game', data);
   });
