@@ -12,6 +12,7 @@
 
   Game.prototype = {
     create: function() {
+      var self = this;
       this.game.physics.startSystem(Phaser.Physics.ARCADE);
       this.game.physics.setBoundsToWorld();
       this.time.advancedTiming = true;
@@ -22,17 +23,40 @@
 
       this.level = this.game.add.tileSprite(0, this.game.height - 600, this.game.width, 600, 'level');
 
-      this.players = this.game.add.group();
+      this.playerGroup = this.game.add.group();
+      this.players = {};
       this.obstacles = this.game.add.group();
 
 
       setInterval(this.spawnRock.bind(this), 1000);
 
-      this.player = new Player(this.game, 300);
-      this.players.add(this.player);
+      Object.keys(window.clients).forEach(function(e) {
+        var p = new Player(self.game, 0, Math.random() * 500 + 120, window.clients[e].clientColor)
+        self.playerGroup.add(p);
+        self.players[e] = p;
+      });
 
       this.upKey = this.game.input.keyboard.addKey(Phaser.Keyboard.UP);
       this.downKey = this.game.input.keyboard.addKey(Phaser.Keyboard.DOWN);
+
+      socket.on('input', function (data) {
+        switch (data.inputData) {
+          case "control1Down":
+            self.players[data.client].direction = -1;
+            break;
+          case "control1Up":
+            self.players[data.client].direction = 0;
+            break;
+          case "control2Down":
+            self.players[data.client].direction = 1;
+            break;
+          case "control2Up":
+            self.players[data.client].direction = 0;
+            break;
+          default:
+            self.players[data.client].direction = 0;
+        }
+      });
     },
     update: function() {
       var now = new Date().getTime();
@@ -48,11 +72,11 @@
       if (this.downKey.isDown) {
         this.player.down(delta)
       }
-      this.game.physics.arcade.overlap(this.players, this.obstacles, this.collisionHandler, null, this);
+      this.game.physics.arcade.overlap(this.playerGroup, this.obstacles, this.collisionHandler, null, this);
     },
     render: function() {
       this.game.debug.text(this.time.fps || '--', 2, 14, "#00ff00");
-      this.game.debug.body(this.player);
+      //this.game.debug.body(this.player);
     },
     spawnRock: function() {
       this.obstacles.add(new Rock(this.game));
