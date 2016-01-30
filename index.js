@@ -14,11 +14,11 @@ import Slave from './lib/slave';
 const app = new Koa();
 
 // app.use(convert(mount('/src', serve(__dirname))));
-app.use(convert(serve(__dirname + '/public')));
 
-app.use(route.get('/', async (ctx, next) => {
-  ctx.body = jade.renderFile('views/index.jade');
-}));
+// serve asset files
+app.use(convert(mount('/assets', serve(__dirname + '/assets'))));
+// serve public folder on root url
+app.use(convert(serve(__dirname + '/public')));
 
 
 const server = Server(app.callback());
