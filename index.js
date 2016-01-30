@@ -19,7 +19,12 @@ const server = Server(app.callback());
 const io = Socket(server);
 
 io.on('connection', (socket) => {
-  console.log('client connected');
+  socket.isFirst = io.engine.clientsCount === 1;
+  if (socket.isFirst) {
+    console.log('master connected');
+  } else {
+    console.log('client connected');
+  }
   socket.on('nachricht', (data) => {
     console.log('nachricht', data);
   });
