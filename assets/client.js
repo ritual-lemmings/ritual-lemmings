@@ -49,6 +49,9 @@ function bootMaster(data) {
     // TODO: inject game win call here!
     // FIXME: add who won the game to notify player ;)
     socket.emit('end');
+
+    reset();
+    addStartButton();
   }
 
   addStartButton();
@@ -61,6 +64,9 @@ function bootMaster(data) {
 
 function bootSlave(data) {
   console.log('My color is', data.clientColor);
+
+  // FIXME: kind of hotfix caching
+  var color = data.clientColor;
 
   html.style.backgroundColor = data.clientColor;
 
@@ -88,6 +94,8 @@ function bootSlave(data) {
 
   socket.on('end', function (data) {
     reset();
+
+    html.style.backgroundColor = color;
 
     console.log('end', data);
   });
