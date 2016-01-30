@@ -20,6 +20,7 @@ socket.on('boot', function (data) {
 
   if (data.clientType === 'master') {
     bootMaster(data);
+    bootGame();
   } else {
     bootSlave(data);
   }
