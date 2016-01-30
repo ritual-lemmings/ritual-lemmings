@@ -44,16 +44,23 @@ function bootSlave(data) {
     control1Button.className = 'control';
     container.appendChild(control1Button);
 
-    control1Button.addEventListener('click', function () {
-      socket.emit('input', { control1: true, control2: false });
+    control1Button.addEventListener('mousedown', function () {
+      socket.emit('input', 'control1Down');
+    });
+
+    control1Button.addEventListener('mouseup', function () {
+      socket.emit('input', 'control1Up');
     });
 
     var control2Button = document.createElement('div');
     control2Button.className = 'control';
     container.appendChild(control2Button);
 
-    control2Button.addEventListener('click', function () {
-      socket.emit('input', { control1: false, control2: true });
+    control2Button.addEventListener('mousedown', function () {
+      socket.emit('input', 'control2Down');
+    });
+    control2Button.addEventListener('mouseup', function () {
+      socket.emit('input', 'control2Up');
     });
 
     console.log('Game started.');
