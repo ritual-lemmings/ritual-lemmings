@@ -46,7 +46,16 @@ function bootSlave(data) {
   html.style.backgroundColor = data.clientColor;
 
   socket.on('start', function (data) {
-    html.style.backgroundColor = '#ffffff';
+    reset();
+
+    var control1Button = document.createElement('div');
+    control1Button.className = 'control';
+    container.appendChild(control1Button);
+
+    var control2Button = document.createElement('div');
+    control2Button.className = 'control';
+    container.appendChild(control2Button);
+
     console.log('Game started.');
   });
 }
