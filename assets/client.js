@@ -5,7 +5,6 @@ function reset() {
   html.style.backgroundColor = '#ffffff';
   // kill all elements of container
   while (container.firstChild) {
-    console.log(container.firstChild);
     container.removeChild(container.firstChild);
   }
 }
