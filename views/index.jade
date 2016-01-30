@@ -8,9 +8,9 @@ html
       var socket = io();
 
       socket.on('boot', function (data) {
-        console.log('I am', data.type);
+        console.log('I am', data.clientType);
 
-        if (data.type === 'master') {
+        if (data.clientType === 'master') {
           bootMaster();
         } else {
           bootSlave();
