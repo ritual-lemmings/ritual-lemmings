@@ -20,48 +20,13 @@ socket.on('boot', function (data) {
 
   if (data.clientType === 'master') {
     bootMaster(data);
-    bootGame();
   } else {
     bootSlave(data);
   }
 });
 
 function bootMaster(data) {
-  function addStartButton() {
-    var startButton = document.createElement('button');
-    startButton.appendChild(document.createTextNode('Start'));
-    container.appendChild(startButton);
-
-    startButton.addEventListener('click', function() {
-      // GAME: Call server to switch state for clients to game start
-      socket.emit('start');
-      reset();
-
-      var endButton = document.createElement('button');
-      endButton.appendChild(document.createTextNode('End'));
-      container.appendChild(endButton);
-
-      endButton.addEventListener('click', function() {
-        endGame();
-      });
-    });
-  }
-
-  function endGame() {
-    // GAME: Send result on end of game to server
-    // FIXME: add who won the game to notify player ;)
-    socket.emit('end');
-
-    reset();
-    addStartButton();
-  }
-
-  addStartButton();
-
-  socket.on('input', function (data) {
-    // GAME: handle user inputs in game here!
-    console.log('input', data);
-  });
+  bootGame();
 }
 
 function bootSlave(data) {
