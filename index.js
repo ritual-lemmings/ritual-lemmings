@@ -1,11 +1,13 @@
 import { Server } from 'http';
 import Koa from 'koa';
 import Socket from 'socket.io';
+import jade from 'jade';
+
 
 const app = new Koa();
 
 app.use(async (ctx, next) => {
-  ctx.body = 'hello lemming!';
+  ctx.body = jade.renderFile('views/index.jade');
 });
 
 
