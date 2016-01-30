@@ -5,8 +5,8 @@
   "private": true,
   "license": "Creative Commons",
   "scripts": {
-    "run": "node node_modules/webpack-dev-server/bin/webpack-dev-server.js --host 0.0.0.0",
-    "build": "node node_modules/webpack/bin/webpack.js",
+    "dev": "node node_modules/webpack-dev-server/bin/webpack-dev-server.js --host 0.0.0.0",
+    "build": "node node_modules/webpack/bin/webpack.js"
   },
   "repository": {
     "type": "git",
