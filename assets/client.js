@@ -32,6 +32,21 @@ function bootMaster(data) {
 
   startButton.addEventListener('click', function() {
     socket.emit('start');
+    reset();
+
+    var endButton = document.createElement('button');
+    endButton.appendChild(document.createTextNode('End'));
+    container.appendChild(endButton);
+
+    endButton.addEventListener('click', function() {
+      socket.emit('end');
+    });
+  });
+
+  socket.on('end', function (data) {
+    reset();
+
+    console.log('end', data);
   });
 
   socket.on('input', function (data) {
