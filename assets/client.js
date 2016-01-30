@@ -32,6 +32,7 @@ function bootMaster(data) {
     container.appendChild(startButton);
 
     startButton.addEventListener('click', function() {
+      // GAME: Call server to switch state for clients to game start
       socket.emit('start');
       reset();
 
@@ -46,7 +47,7 @@ function bootMaster(data) {
   }
 
   function endGame() {
-    // TODO: inject game win call here!
+    // GAME: Send result on end of game to server
     // FIXME: add who won the game to notify player ;)
     socket.emit('end');
 
@@ -57,7 +58,7 @@ function bootMaster(data) {
   addStartButton();
 
   socket.on('input', function (data) {
-    // TODO: handle user inputs in game here!
+    // GAME: handle user inputs in game here!
     console.log('input', data);
   });
 }
