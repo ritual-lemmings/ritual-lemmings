@@ -26,30 +26,30 @@ socket.on('boot', function (data) {
 });
 
 function bootMaster(data) {
-  var startButton = document.createElement('button');
-  startButton.appendChild(document.createTextNode('Start'));
-  container.appendChild(startButton);
+  function addStartButton() {
+    var startButton = document.createElement('button');
+    startButton.appendChild(document.createTextNode('Start'));
+    container.appendChild(startButton);
 
-  startButton.addEventListener('click', function() {
-    socket.emit('start');
-    reset();
+    startButton.addEventListener('click', function() {
+      socket.emit('start');
+      reset();
 
-    var endButton = document.createElement('button');
-    endButton.appendChild(document.createTextNode('End'));
-    container.appendChild(endButton);
+      var endButton = document.createElement('button');
+      endButton.appendChild(document.createTextNode('End'));
+      container.appendChild(endButton);
 
-    endButton.addEventListener('click', function() {
-      socket.emit('end');
+      endButton.addEventListener('click', function() {
+        // TODO: inject game win call here!
+        socket.emit('end');
+      });
     });
-  });
+  }
 
-  socket.on('end', function (data) {
-    reset();
-
-    console.log('end', data);
-  });
+  addStartButton();
 
   socket.on('input', function (data) {
+    // TODO: handle user inputs in game here!
     console.log('input', data);
   });
 }
@@ -79,5 +79,11 @@ function bootSlave(data) {
     });
 
     console.log('Game started.');
+  });
+
+  socket.on('end', function (data) {
+    reset();
+
+    console.log('end', data);
   });
 }
