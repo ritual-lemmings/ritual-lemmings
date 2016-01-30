@@ -1,12 +1,13 @@
 var html = document.querySelector('html');
 var container = document.querySelector('#container');
 
-/// reset
-html.style.backgroundColor = '#ffffff';
-// kill all elements of container
-while (container.firstChild) {
-  console.log(container.firstChild);
-  container.removeChild(container.firstChild);
+function reset() {
+  html.style.backgroundColor = '#ffffff';
+  // kill all elements of container
+  while (container.firstChild) {
+    console.log(container.firstChild);
+    container.removeChild(container.firstChild);
+  }
 }
 
 
@@ -15,6 +16,8 @@ var socket = io();
 
 socket.on('boot', function (data) {
   console.log('I am', data.clientType);
+
+  reset();
 
   if (data.clientType === 'master') {
     bootMaster(data);
