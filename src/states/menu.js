@@ -12,6 +12,7 @@
       this.input.onUp.addOnce(this.start, this);
       socket.on('playerConnect', this.onConnect.bind(this));
       socket.on('playerDisconnect', this.onDisconnect.bind(this));
+      this.game.add.sprite(0, 0, 'title');
     },
 
     onConnect: function(data) {

@@ -24,6 +24,9 @@
       this.load.image('bg_back', 'assets/bg_back.png');
       this.load.image('bg_front', 'assets/bg_front.png');
       this.load.image('sky', 'assets/sky.png');
+
+      this.load.image('title', 'assets/title.png');
+      this.load.image('pow', 'assets/pow.png');
     },
 
     create: function () {
