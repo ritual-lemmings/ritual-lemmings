@@ -44,6 +44,14 @@ function selectClientNumber(socket, clients) {
 }
 
 io.on('connection', (socket) => {
+  function getMaster() {
+    const masterArray = clients.filter(element => {
+      return element.socket.clientType === 'master';
+    });
+    if (masterArray.length > 0) {
+      return masterArray[0];
+    }
+  }
   const hasMaster = clients.some((element, index, array) => {
     return element.socket.clientType === 'master';
   });
@@ -57,7 +65,7 @@ io.on('connection', (socket) => {
     client = new Master(socket)
     clients.push(client);
   } else {
-    client = new Slave(socket);
+    client = new Slave(socket, io, getMaster());
     clients.push(client);
   }
 
