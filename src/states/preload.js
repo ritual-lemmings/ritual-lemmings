@@ -18,7 +18,7 @@
 
       this.load.image('level', 'assets/level.png');
       this.load.image('rock', 'assets/rock.png');
-      this.load.spritesheet('player_body', 'assets/player2.png', 120, 120);
+      this.load.spritesheet('player_body', 'assets/player.png', 120, 120);
       this.load.spritesheet('player_mask', 'assets/player_mask.png', 120, 120);
 
       this.load.image('bg_back', 'assets/bg_back.png');
