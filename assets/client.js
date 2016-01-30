@@ -1,3 +1,5 @@
+var body = document.querySelector('body');
+
 var socket = io();
 
 socket.on('boot', function (data) {
@@ -11,6 +13,15 @@ socket.on('boot', function (data) {
 });
 
 function bootMaster(data) {
+  var startButton = document.createElement('button');
+  startButton.appendChild(document.createTextNode('Start'));
+  body.appendChild(startButton);
+
+  startButton.addEventListener('click', function() {
+    console.log('start!');
+  });
+
+
   socket.on('input', function (data) {
     console.log('input', data);
   });
