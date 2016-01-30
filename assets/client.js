@@ -46,6 +46,7 @@ function bootSlave(data) {
   html.style.backgroundColor = data.clientColor;
 
   socket.on('start', function (data) {
+    html.style.backgroundColor = '#ffffff';
     console.log('Game started.');
   });
 }
