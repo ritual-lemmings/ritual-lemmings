@@ -11,19 +11,21 @@ html
         console.log('I am', data.clientType);
 
         if (data.clientType === 'master') {
-          bootMaster();
+          bootMaster(data);
         } else {
-          bootSlave();
+          bootSlave(data);
         }
       });
 
-      function bootMaster() {
+      function bootMaster(data) {
         socket.on('input', function (data) {
           console.log('input', data);
         });
       }
 
-      function bootSlave() {
+      function bootSlave(data) {
+        console.log('My color is', data.clientColor);
+
         socket.on('game', function (data) {
           console.log('game', data);
         });
