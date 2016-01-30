@@ -1,5 +1,7 @@
 import { Server } from 'http';
 import Koa from 'koa';
+import route from 'koa-route';
+import mount from 'koa-mount';
 import convert from 'koa-convert';
 import serve from 'koa-static';
 import Socket from 'socket.io';
@@ -11,11 +13,12 @@ import Slave from './lib/slave';
 
 const app = new Koa();
 
-app.use(async (ctx, next) => {
-  ctx.body = jade.renderFile('views/index.jade');
-});
+// app.use(convert(mount('/src', serve(__dirname))));
+app.use(convert(mount('/assets', serve(__dirname + '/assets'))));
 
-app.use(convert(serve(__dirname + '/assets/')));
+app.use(route.get('/', async (ctx, next) => {
+  ctx.body = jade.renderFile('views/index.jade');
+}));
 
 
 const server = Server(app.callback());
