@@ -26,7 +26,7 @@ io.on('connection', (socket) => {
   socket.clientType = isFirst ? 'master' : 'slave';
   socket.clientId = io.engine.clientsCount - 1;
 
-  if (socket.isFirst) {
+  if (isFirst) {
     new Master(socket);
   } else {
     new Slave(socket);
