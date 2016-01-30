@@ -7,3 +7,4 @@
 
 # client
 /dist/
+/public/bundle.js
