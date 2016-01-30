@@ -23,6 +23,23 @@ const io = Socket(server);
 
 let clients = [];
 
+function selectClientNumber(socket, clients) {
+  if (socket.clientType === 'master') {
+    return 0;
+  }
+
+  const takenNumbers = clients.map(element => {
+    return element.socket.clientNumber;
+  });
+
+  for (let number = 1; number <= clients.length; number++) {
+    if (!takenNumbers.includes(number)) {
+      return number;
+    }
+  }
+  return clients.length + 1;
+}
+
 io.on('connection', (socket) => {
   const hasMaster = clients.some((element, index, array) => {
     return element.socket.clientType === 'master';
@@ -30,9 +47,7 @@ io.on('connection', (socket) => {
 
   socket.clientType = !hasMaster ? 'master' : 'slave';
   socket.clientId = socket.id;
-  console.log(hasMaster, socket.clientType, clients.map(element => {
-    return element.socket.clientType;
-  }));
+  socket.clientNumber = selectClientNumber(socket, clients);
 
   let client;
   if (!hasMaster) {
@@ -47,7 +62,7 @@ io.on('connection', (socket) => {
     clients = clients.filter(element => {
       return element.socket.id !== socket.id;
     });
-    console.log(`${socket.clientType} (${socket.id}) disconnected.`);
+    console.log(`${socket.clientType} (${socket.clientNumber}) disconnected.`);
   });
 });
 
