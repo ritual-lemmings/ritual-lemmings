@@ -26,6 +26,7 @@ io.on('connection', (socket) => {
   socket.clientType = isFirst ? 'master' : 'slave';
   socket.clientId = io.engine.clientsCount - 1;
 
+  // FIXME: if master needs to reconnect it turns into a slave
   if (isFirst) {
     new Master(socket);
   } else {
