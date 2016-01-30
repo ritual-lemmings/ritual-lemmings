@@ -13,9 +13,8 @@
     },
 
     create: function () {
-      // configure game
+      this.game.stage.disableVisibilityChange = true;
       this.game.input.maxPointers = 1;
-      console.log("boot ready");
       this.game.state.start('preload');
     }
   };
