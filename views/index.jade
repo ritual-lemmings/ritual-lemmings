@@ -3,4 +3,19 @@ html
   head
     title Ritual Lemmings
   body
+    script(src='socket.io/socket.io.js')
+    script.
+      var socket = io();
+
+      socket.on('nachricht', function (data) {
+        socket.emit('nachricht', { data: data });
+      });
+
+      function meep() {
+        console.log('sending meep...');
+        socket.emit('nachricht', { data: 'meep' });
+      }
+      window.socket = socket;
     p hello lemming
+
+    button(onClick='meep();') Meep

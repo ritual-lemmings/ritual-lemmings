@@ -15,10 +15,14 @@ const server = Server(app.callback());
 const io = Socket(server);
 
 io.on('connection', (socket) => {
-  socket.emit('ping', { hello: 'lemming' });
-  socket.on('pong', (data) => {
-    console.log('pong', data);
+  console.log('client connected');
+  socket.on('nachricht', (data) => {
+    console.log('nachricht', data);
   });
+  socket.on('disconnect', () => {
+    console.log('client disconnected');
+  });
+  socket.emit('nachricht', { hello: 'lemming' });
 });
 
 server.listen(3000);
