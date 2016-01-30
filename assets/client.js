@@ -67,10 +67,3 @@ function bootSlave(data) {
     console.log('Game started.');
   });
 }
-
-
-function meep() {
-  console.log('sending meep...');
-  socket.emit('nachricht', { data: 'meep' });
-}
-window.socket = socket;
