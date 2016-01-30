@@ -1,7 +1,6 @@
 require("../node_modules/phaser/dist/pixi.js");
 require("../node_modules/phaser/dist/phaser.js");
 require('./main.sass');
-require('./main.css');
 
 var Boot = require('./states/boot');
 var Preload = require('./states/preload');
