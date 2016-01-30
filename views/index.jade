@@ -7,8 +7,8 @@ html
     script.
       var socket = io();
 
-      socket.on('nachricht', function (data) {
-        socket.emit('nachricht', { data: data });
+      socket.on('boot', function (data) {
+        console.log('I am', data.type);
       });
 
       function meep() {

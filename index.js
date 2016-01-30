@@ -22,8 +22,10 @@ io.on('connection', (socket) => {
   socket.isFirst = io.engine.clientsCount === 1;
   if (socket.isFirst) {
     console.log('master connected');
+    socket.emit('boot', { type: 'master' });
   } else {
     console.log('client connected');
+    socket.emit('boot', { type: 'slave' });
   }
   socket.on('nachricht', (data) => {
     console.log('nachricht', data);
@@ -31,7 +33,6 @@ io.on('connection', (socket) => {
   socket.on('disconnect', () => {
     console.log('client disconnected');
   });
-  socket.emit('nachricht', { hello: 'lemming' });
 });
 
 server.listen(3000);
