@@ -14,7 +14,7 @@ import Slave from './lib/slave';
 const app = new Koa();
 
 // app.use(convert(mount('/src', serve(__dirname))));
-app.use(convert(mount('/assets', serve(__dirname + '/assets'))));
+app.use(convert(serve(__dirname + '/public')));
 
 app.use(route.get('/', async (ctx, next) => {
   ctx.body = jade.renderFile('views/index.jade');
