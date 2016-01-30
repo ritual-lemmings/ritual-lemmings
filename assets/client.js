@@ -1,5 +1,16 @@
-var body = document.querySelector('body');
+var html = document.querySelector('html');
+var container = document.querySelector('#container');
 
+/// reset
+html.style.backgroundColor = '#ffffff';
+// kill all elements of container
+while (container.firstChild) {
+  console.log(container.firstChild);
+  container.removeChild(container.firstChild);
+}
+
+
+/// game
 var socket = io();
 
 socket.on('boot', function (data) {
@@ -15,7 +26,7 @@ socket.on('boot', function (data) {
 function bootMaster(data) {
   var startButton = document.createElement('button');
   startButton.appendChild(document.createTextNode('Start'));
-  body.appendChild(startButton);
+  container.appendChild(startButton);
 
   startButton.addEventListener('click', function() {
     socket.emit('start');
@@ -29,7 +40,6 @@ function bootMaster(data) {
 function bootSlave(data) {
   console.log('My color is', data.clientColor);
 
-  var html = document.querySelector('html');
   html.style.backgroundColor = data.clientColor;
 
   socket.on('start', function (data) {
