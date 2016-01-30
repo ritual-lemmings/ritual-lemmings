@@ -1,0 +1,35 @@
+{
+  "name": "ritual-lemmings",
+  "version": "0.0.0",
+  "description": "RituaLemmings Game Master",
+  "private": true,
+  "license": "Creative Commons",
+  "scripts": {
+    "run": "node node_modules/webpack-dev-server/bin/webpack-dev-server.js --host 0.0.0.0",
+    "build": "node node_modules/webpack/bin/webpack.js",
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/"
+  },
+  "keywords": [
+    "GGJ2016",
+    "GGJMUC"
+  ],
+  "author": {
+    "name": "akuryou",
+    "email": "akuryou@byteweaver.org"
+  },
+  "dependencies": {
+    "phaser": "2.4.4"
+  },
+  "devDependencies": {
+    "autoprefixer-loader": "3.2.0",
+    "css-loader": "^0.18.1",
+    "sass-loader": "^2.0.1",
+    "style-loader": "^0.12.3",
+    "script-loader": "0.6.1",
+    "webpack": "1.12.12",
+    "webpack-dev-server": "1.14.1"
+  }
+}
