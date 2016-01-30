@@ -7,6 +7,7 @@ import jade from 'jade';
 
 import Master from './lib/master';
 import Slave from './lib/slave';
+import Logger from './lib/logger';
 
 
 const app = new Koa();
@@ -20,19 +21,22 @@ app.use(convert(serve(__dirname + '/assets/')));
 
 const server = Server(app.callback());
 const io = Socket(server);
+const logger = new Logger();
 
 io.on('connection', (socket) => {
-  socket.isFirst = io.engine.clientsCount === 1;
+  const isFirst = io.engine.clientsCount === 1;
+  socket.clientType = isFirst ? 'master' : 'slave';
+
+  logger.log(socket, 'connected.');
+
   if (socket.isFirst) {
     new Master(socket);
   } else {
     new Slave(socket);
   }
-  socket.on('nachricht', (data) => {
-    console.log('nachricht', data);
-  });
+
   socket.on('disconnect', () => {
-    console.log('client disconnected');
+    logger.log(socket, 'disconnected.');
   });
 });
 
