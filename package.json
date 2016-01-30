@@ -43,4 +43,5 @@
     "style-loader": "^0.12.3",
     "webpack": "1.12.12",
     "webpack-dev-server": "1.14.1"
+  }
 }
