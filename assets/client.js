@@ -18,9 +18,8 @@ function bootMaster(data) {
   body.appendChild(startButton);
 
   startButton.addEventListener('click', function() {
-    console.log('start!');
+    socket.emit('start');
   });
-
 
   socket.on('input', function (data) {
     console.log('input', data);
@@ -33,8 +32,8 @@ function bootSlave(data) {
   var html = document.querySelector('html');
   html.style.backgroundColor = data.clientColor;
 
-  socket.on('game', function (data) {
-    console.log('game', data);
+  socket.on('start', function (data) {
+    console.log('Game started.');
   });
 }
 
