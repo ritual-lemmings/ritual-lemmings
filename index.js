@@ -21,20 +21,33 @@ app.use(convert(serve(__dirname + '/assets/')));
 const server = Server(app.callback());
 const io = Socket(server);
 
-io.on('connection', (socket) => {
-  const isFirst = io.engine.clientsCount === 1;
-  socket.clientType = isFirst ? 'master' : 'slave';
-  socket.clientId = io.engine.clientsCount - 1;
+let clients = [];
 
-  // FIXME: if master needs to reconnect it turns into a slave
-  if (isFirst) {
-    new Master(socket);
+io.on('connection', (socket) => {
+  const hasMaster = clients.some((element, index, array) => {
+    return element.socket.clientType === 'master';
+  });
+
+  socket.clientType = !hasMaster ? 'master' : 'slave';
+  socket.clientId = socket.id;
+  console.log(hasMaster, socket.clientType, clients.map(element => {
+    return element.socket.clientType;
+  }));
+
+  let client;
+  if (!hasMaster) {
+    client = new Master(socket)
+    clients.push(client);
   } else {
-    new Slave(socket);
+    client = new Slave(socket);
+    clients.push(client);
   }
 
   socket.on('disconnect', () => {
-    console.log(`${socket.clientType} (${socket.clientId}) disconnected.`);
+    clients = clients.filter(element => {
+      return element.socket.id !== socket.id;
+    });
+    console.log(`${socket.clientType} (${socket.id}) disconnected.`);
   });
 });
 
