@@ -26,6 +26,7 @@ const logger = new Logger();
 io.on('connection', (socket) => {
   const isFirst = io.engine.clientsCount === 1;
   socket.clientType = isFirst ? 'master' : 'slave';
+  socket.clientId = io.engine.clientsCount - 1;
 
   logger.log(socket, 'connected.');
 
