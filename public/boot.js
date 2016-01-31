@@ -28,7 +28,7 @@ socket.on('boot', function (data) {
 function bootMaster(data) {
   bootGame();
 
-  drawQrcode("this text will be in the code!");
+  drawQrcode(window.location.origin);
 }
 
 function drawQrcode(text) {
