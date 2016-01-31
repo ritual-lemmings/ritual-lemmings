@@ -28,7 +28,7 @@
       this.players = {};
       this.obstacles = this.game.add.group();
 
-      setInterval(this.spawnRock.bind(this), 1000);
+      this.spawnObstacle();
 
       Object.keys(window.clients).forEach(function(e) {
         var p = new Player(self.game, 5*120, Math.random() * 500 + 120, window.clients[e].clientColor)
@@ -77,9 +77,20 @@
     render: function() {
       this.game.debug.text(this.time.fps || '--', 2, 14, "#00ff00");
       //this.game.debug.body(this.player);
+      function renderGroup(member) {
+        this.game.debug.body(member);
+      }
+      this.obstacles.forEachAlive(renderGroup, this);
     },
-    spawnRock: function() {
-      this.obstacles.add(new Rock(this.game));
+    spawnObstacle: function() {
+      var obs = [Rock, Rock, Rock, Rock, Rock, Rock, Rock, Rock, Rock, Rock, Lake];
+      var choice = obs[Math.floor(Math.random() * obs.length)];
+      this.obstacles.add(new choice(this.game));
+      if (choice === Rock) {
+        setTimeout(this.spawnObstacle.bind(this), 1000);
+      } else if (choice === Lake) {
+        setTimeout(this.spawnObstacle.bind(this), 3000);
+      }
     },
     collisionHandler: function(player, obstacle) {
       player.crash(player, obstacle);
