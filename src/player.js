@@ -74,10 +74,10 @@
   };
 
   Player.prototype.chili = function (self, other) {
-    if (this.x < this.game.width - 240) {
+    if (this.x < this.game.width - 370) {
       this.game.add.tween(this).to( { x: this.position.x +120 }, 500, Phaser.Easing.Cubic.Out, true);
     } else {
-      this.game.add.tween(this).to( { x: this.position.x +320 }, 500, Phaser.Easing.Cubic.Out, true);
+      this.game.add.tween(this).to( { x: this.position.x +420 }, 500, Phaser.Easing.Cubic.Out, true);
     }
     other.kill();
   };
