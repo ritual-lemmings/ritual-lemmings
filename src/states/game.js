@@ -1,6 +1,7 @@
 (function () {
   'use strict';
 
+  var Lake = require('./../obstacles/lake');
   var Rock = require('./../obstacles/rock');
   var Player = require('../player');
 
