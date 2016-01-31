@@ -31,6 +31,14 @@ function bootMaster(data) {
   drawQrcode(window.location.origin);
 }
 
+function hideQrcode() {
+  document.getElementById('qrcode').style.display = 'none';
+}
+
+function showQrcode() {
+  document.getElementById('qrcode').style.display = 'inline-block';
+}
+
 function drawQrcode(text) {
   var qrcodedraw = new QRCodeLib.QRCodeDraw();
 
