@@ -82,8 +82,7 @@
       this.obstacles.add(new Rock(this.game));
     },
     collisionHandler: function(player, obstacle) {
-      console.log("boom");
-      player.crash();
+      player.crash(player, obstacle);
     }
   };
 

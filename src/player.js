@@ -20,6 +20,12 @@
       this.playerMask.animations.play('walk', 8, true);
 
       this.addChild(this.playerMask);
+
+      this.emitter = this.game.add.emitter(60, 60, 100);
+      this.emitter.makeParticles('pow');
+      this.emitter.setScale(0, 1, 0, 1, 1000, Phaser.Easing.Quintic.Out);
+
+      this.crashed = false;
   };
 
   Player.prototype = Object.create(Phaser.Sprite.prototype);
@@ -54,8 +60,14 @@
     }
   };
 
-  Player.prototype.crash = function () {
-    //this.tint = 0xFF0000;
+  Player.prototype.crash = function (self, other) {
+    if (this.lastCrash !== other) {
+      this.emitter.x = this.position.x;
+      this.emitter.y = this.position.y;
+      this.emitter.gravity = 0;
+      this.emitter.start(true, 1000, null, 1);
+    }
+    this.lastCrash = other;
   };
 
   module.exports = Player;
