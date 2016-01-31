@@ -84,14 +84,15 @@
       this.game.physics.arcade.overlap(this.playerGroup, this.obstacles, this.obstacleCollisionHandler, null, this);
       this.game.physics.arcade.overlap(this.playerGroup, this.chilis, this.chiliCollisionHandler, null, this);
     },
+    /*
     render: function() {
       this.game.debug.text(this.time.fps || '--', 2, 14, "#00ff00");
-      //this.game.debug.body(this.player);
       function renderGroup(member) {
         this.game.debug.body(member);
       }
       this.obstacles.forEachAlive(renderGroup, this);
     },
+    */
     spawnChili: function() {
       this.chilis.add(new Chili(this.game));
       setTimeout(this.spawnChili.bind(this), Math.random() * 2000 + 500);
