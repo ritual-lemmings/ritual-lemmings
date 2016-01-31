@@ -63,6 +63,11 @@
     }
   };
 
+  Player.prototype.chili = function (self, other) {
+    this.game.add.tween(this).to( { x: this.position.x +120 }, 500, Phaser.Easing.Cubic.Out, true);
+    other.kill();
+  };
+
   Player.prototype.crash = function (self, other) {
     if (this.lastCrash !== other) {
       this.emitter.x = this.position.x;

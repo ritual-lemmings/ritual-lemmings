@@ -1,6 +1,7 @@
 (function () {
   'use strict';
 
+  var Chili = require('./../chili');
   var Lake = require('./../obstacles/lake');
   var Rock = require('./../obstacles/rock');
   var Player = require('../player');
@@ -27,8 +28,10 @@
       this.playerGroup = this.game.add.group();
       this.players = {};
       this.obstacles = this.game.add.group();
+      this.chilis = this.game.add.group();
 
       this.spawnObstacle();
+      this.spawnChili();
 
       Object.keys(window.clients).forEach(function(e) {
         var p = new Player(self.game, 5*120, Math.random() * 500 + 120, window.clients[e].clientColor)
@@ -72,7 +75,8 @@
       if (this.downKey.isDown) {
         this.player.down(delta)
       }
-      this.game.physics.arcade.overlap(this.playerGroup, this.obstacles, this.collisionHandler, null, this);
+      this.game.physics.arcade.overlap(this.playerGroup, this.obstacles, this.obstacleCollisionHandler, null, this);
+      this.game.physics.arcade.overlap(this.playerGroup, this.chilis, this.chiliCollisionHandler, null, this);
     },
     render: function() {
       this.game.debug.text(this.time.fps || '--', 2, 14, "#00ff00");
@@ -81,6 +85,10 @@
         this.game.debug.body(member);
       }
       this.obstacles.forEachAlive(renderGroup, this);
+    },
+    spawnChili: function() {
+      this.chilis.add(new Chili(this.game));
+      setTimeout(this.spawnChili.bind(this), Math.random() * 2000 + 500);
     },
     spawnObstacle: function() {
       var obs = [Rock, Rock, Rock, Rock, Rock, Rock, Rock, Rock, Rock, Rock, Lake];
@@ -92,8 +100,11 @@
         setTimeout(this.spawnObstacle.bind(this), 3000);
       }
     },
-    collisionHandler: function(player, obstacle) {
+    obstacleCollisionHandler: function(player, obstacle) {
       player.crash(player, obstacle);
+    },
+    chiliCollisionHandler: function(player, obstacle) {
+      player.chili(player, obstacle);
     }
   };
 
