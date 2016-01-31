@@ -1,9 +1,10 @@
 (function() {
   'use strict';
 
-  var Player = function (game, x, y, color) {
+  var Player = function (game, x, y, color, id) {
       Phaser.Sprite.call(this, game, x, y, 'player_body');
       game.add.existing(this);
+      this.id = id;
       this.lastFrame = new Date().getTime();
       this.direction = 0;
 
@@ -61,10 +62,21 @@
     if (this.y < 120) {
       this.y = 120;
     }
+    if (this.x < 0) {
+      this.x = 0;
+    }
+    if (this.x >= this.game.width) {
+      window.winner = this.id;
+      this.game.state.start('end');
+    }
   };
 
   Player.prototype.chili = function (self, other) {
-    this.game.add.tween(this).to( { x: this.position.x +120 }, 500, Phaser.Easing.Cubic.Out, true);
+    if (this.x < this.game.width - 240) {
+      this.game.add.tween(this).to( { x: this.position.x +120 }, 500, Phaser.Easing.Cubic.Out, true);
+    } else {
+      this.game.add.tween(this).to( { x: this.position.x +320 }, 500, Phaser.Easing.Cubic.Out, true);
+    }
     other.kill();
   };
 
