@@ -17,6 +17,8 @@ const app = new Koa();
 
 // serve asset files
 app.use(convert(mount('/assets', serve(__dirname + '/assets'))));
+// node modules expose for client, has to work without building client for now
+app.use(convert(mount('/modules', serve(__dirname + '/node_modules'))));
 // serve public folder on root url
 app.use(convert(serve(__dirname + '/public')));
 
