@@ -2,7 +2,9 @@
   'use strict';
 
   var Rock = function (game) {
-    var y = Math.floor(Math.random() * (5 - 1 + 1)) + 1;
+    var min = 1
+    var max = 5
+    var y = Math.floor(Math.random() * (max - min + 1)) + min;
     y = y * 120;
     Phaser.Sprite.call(this, game, game.width, y, 'rock');
     game.add.existing(this);
