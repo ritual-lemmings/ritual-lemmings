@@ -2,6 +2,8 @@
 
 A multiplayer game designed for up to 8 persons playing together on one screen in the living room with their own mobile phone.
 
+![Game still](http://globalgamejam.org/sites/default/files/styles/game_content__wide_2x/public/games/screenshots/screenshot_72.jpg?itok=kRJ3vYwO)
+
 Yes, really in the same physical place. No, no need for controllers. Plain simple sidescroller meant to be played together.
 
 A project for the global game jam 2016, built with love in Munich (WERK1), http://globalgamejam.org/2016/games/ritualemmings.
