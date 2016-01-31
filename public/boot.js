@@ -1,6 +1,9 @@
 var html = document.querySelector('html');
 var container = document.querySelector('#container');
 
+// disable context menu
+window.addEventListener("contextmenu", function(e) { e.preventDefault(); })
+
 function reset() {
   html.style.backgroundColor = '#ffffff';
   // kill all elements of container
