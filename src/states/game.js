@@ -27,11 +27,10 @@
       this.players = {};
       this.obstacles = this.game.add.group();
 
-
       setInterval(this.spawnRock.bind(this), 1000);
 
       Object.keys(window.clients).forEach(function(e) {
-        var p = new Player(self.game, 0, Math.random() * 500 + 120, window.clients[e].clientColor)
+        var p = new Player(self.game, 5*120, Math.random() * 500 + 120, window.clients[e].clientColor)
         self.playerGroup.add(p);
         self.players[e] = p;
       });
