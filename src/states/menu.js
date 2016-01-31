@@ -22,7 +22,7 @@
       data.clientColor = data.clientColor.replace('#','');
       if (!window.clients[data.clientId]) {
         window.clients[data.clientId] = data;
-        this.players[data.clientId] = new Player(this.game, Object.keys(window.clients).length * 120, 500, data.clientColor);
+        this.players[data.clientId] = new Player(this.game, Object.keys(window.clients).length * 120 + 300, 570, data.clientColor);
         this.joinSound.play();
       }
     },
