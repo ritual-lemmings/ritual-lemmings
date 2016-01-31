@@ -7,9 +7,12 @@
         <title>RituaLemmings</title>
     </head>
     <body>
-      <div id="game-container"></div>
       <div id="container"></div>
+      <div id="game-container">
+        <canvas id="qrcode"></canvas>
+      </div>
       <script src="socket.io/socket.io.js"></script>
+      <script src="modules/qrcode/build/qrcode.min.js"></script>
       <script src="bundle.js"></script>
       <script src="boot.js"></script>
     </body>

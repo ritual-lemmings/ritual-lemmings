@@ -27,6 +27,19 @@ socket.on('boot', function (data) {
 
 function bootMaster(data) {
   bootGame();
+
+  drawQrcode("this text will be in the code!");
+}
+
+function drawQrcode(text) {
+  var qrcodedraw = new QRCodeLib.QRCodeDraw();
+
+  qrcodedraw.draw(document.getElementById('qrcode'), text, function(error, canvas){
+    if(error){
+       return console.log('Error =( ', error);
+    }
+    console.log('success!');
+  });
 }
 
 function bootSlave(data) {
