@@ -69,6 +69,14 @@
       this.emitter.y = this.position.y;
       this.emitter.gravity = 0;
       this.emitter.start(true, 1000, null, 1);
+
+      this.animations.play('crash', 8);
+      this.playerMask.animations.play('crash', 8);
+      this.animations.currentAnim.onComplete.add(function () {
+        this.animations.play('walk', 8, true);
+        this.playerMask.animations.play('walk', 8, true);
+      }, this);
+      this.game.add.tween(this).to( { x: this.position.x -120 }, 500, Phaser.Easing.Cubic.Out, true);
     }
     this.lastCrash = other;
   };
