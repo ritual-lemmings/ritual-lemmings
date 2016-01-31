@@ -34,6 +34,8 @@ function bootMaster(data) {
 function drawQrcode(text) {
   var qrcodedraw = new QRCodeLib.QRCodeDraw();
 
+  qrcodedraw.scale = 8;
+
   qrcodedraw.draw(document.getElementById('qrcode'), text, function(error, canvas){
     if(error){
        return console.log('Error =( ', error);
