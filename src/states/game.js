@@ -19,6 +19,12 @@
       this.game.physics.setBoundsToWorld();
       this.time.advancedTiming = true;
 
+      this.music = this.game.add.audio('music');
+      this.music.loop = true;
+      this.music.play();
+
+      this.chiliSound = this.game.add.audio('chili_sound');
+
       this.sky = this.game.add.tileSprite(0, 0, this.game.width, 240, 'sky');
       this.bgBack = this.game.add.tileSprite(0, 0, this.game.width, 240, 'bg_back');
       this.bgFront = this.game.add.tileSprite(0, 0, this.game.width, 240, 'bg_front');
@@ -105,6 +111,7 @@
     },
     chiliCollisionHandler: function(player, obstacle) {
       player.chili(player, obstacle);
+      this.chiliSound.play();
     }
   };
 

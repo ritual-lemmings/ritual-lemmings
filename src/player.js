@@ -29,6 +29,8 @@
       this.emitter.makeParticles('pow');
       this.emitter.setScale(0, 1, 0, 1, 1000, Phaser.Easing.Quintic.Out);
 
+      this.crashSounds = [this.game.add.audio('impact1'), this.game.add.audio('impact2')]
+
       this.crashed = false;
   };
 
@@ -96,6 +98,8 @@
       if (this.position.x > 0) {
         this.game.add.tween(this).to( { x: this.position.x -120 }, 500, Phaser.Easing.Cubic.Out, true);
       }
+      var choice = this.crashSounds[Math.floor(Math.random() * this.crashSounds.length)];
+      choice.play();
     }
     this.lastCrash = other;
   };

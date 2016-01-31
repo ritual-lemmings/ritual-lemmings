@@ -30,6 +30,12 @@
       this.load.image('title', 'assets/title.png');
       this.load.image('end', 'assets/end.png');
       this.load.image('pow', 'assets/pow.png');
+
+      this.game.load.audio('music', 'assets/music.wav');
+      this.game.load.audio('chili_sound', 'assets/chili1.wav');
+      this.game.load.audio('jump_sound', 'assets/jump.wav');
+      this.game.load.audio('impact1', 'assets/impact1.wav');
+      this.game.load.audio('impact2', 'assets/impact2.wav');
     },
 
     create: function () {

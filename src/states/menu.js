@@ -13,6 +13,8 @@
       socket.on('playerConnect', this.onConnect.bind(this));
       socket.on('playerDisconnect', this.onDisconnect.bind(this));
       this.game.add.sprite(0, 0, 'title');
+
+      this.joinSound = this.game.add.audio('jump_sound');
     },
 
     onConnect: function(data) {
@@ -21,6 +23,7 @@
       if (!window.clients[data.clientId]) {
         window.clients[data.clientId] = data;
         this.players[data.clientId] = new Player(this.game, Object.keys(window.clients).length * 120, 500, data.clientColor);
+        this.joinSound.play();
       }
     },
     onDisconnect: function(data) {
