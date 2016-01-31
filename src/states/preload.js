@@ -28,6 +28,7 @@
       this.load.image('sky', 'assets/sky.png');
 
       this.load.image('title', 'assets/title.png');
+      this.load.image('end', 'assets/end.png');
       this.load.image('pow', 'assets/pow.png');
     },
 
