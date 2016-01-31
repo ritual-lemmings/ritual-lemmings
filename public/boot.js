@@ -67,11 +67,11 @@ function bootSlave(data) {
     control1Button.className = 'control';
     container.appendChild(control1Button);
 
-    control1Button.addEventListener('mousedown', function () {
+    control1Button.addEventListener('touchstart', function () {
       socket.emit('input', 'control1Down');
     });
 
-    control1Button.addEventListener('mouseup', function () {
+    control1Button.addEventListener('touchend', function () {
       socket.emit('input', 'control1Up');
     });
 
@@ -79,10 +79,10 @@ function bootSlave(data) {
     control2Button.className = 'control';
     container.appendChild(control2Button);
 
-    control2Button.addEventListener('mousedown', function () {
+    control2Button.addEventListener('touchstart', function () {
       socket.emit('input', 'control2Down');
     });
-    control2Button.addEventListener('mouseup', function () {
+    control2Button.addEventListener('touchend', function () {
       socket.emit('input', 'control2Up');
     });
 

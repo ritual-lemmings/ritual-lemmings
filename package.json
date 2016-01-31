@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/ritual-lemmings/ritual-lemmings-server#readme",
   "dependencies": {
+    "fastclick": "^1.0.6",
     "jade": "^1.11.0",
     "koa": "^2.0.0-alpha.3",
     "koa-convert": "^1.2.0",

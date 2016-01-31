@@ -11,6 +11,14 @@
       <div id="game-container">
         <canvas id="qrcode"></canvas>
       </div>
+      <script src="modules/fastclick/lib/fastclick.js"></script>
+      <script>
+        if ('addEventListener' in document) {
+          document.addEventListener('DOMContentLoaded', function() {
+            FastClick.attach(document.body);
+          }, false);
+        }
+      </script>
       <script src="socket.io/socket.io.js"></script>
       <script src="modules/qrcode/build/qrcode.min.js"></script>
       <script src="bundle.js"></script>
