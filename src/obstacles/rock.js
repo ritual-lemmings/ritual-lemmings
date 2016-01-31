@@ -12,6 +12,7 @@
     this.physicsBodyType = Phaser.Physics.ARCADE;
     this.checkWorldBounds = true;
     this.events.onOutOfBounds.add(this.outOfBounds, this);
+    this.body.setSize(100, 60, 10, 40);
   }
 
   Rock.prototype = Object.create(Phaser.Sprite.prototype);
