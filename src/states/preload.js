@@ -18,6 +18,8 @@
 
       this.load.image('level', 'assets/level.png');
       this.load.image('rock', 'assets/rock.png');
+      this.load.image('tree1', 'assets/tree1.png');
+      this.load.image('tree2', 'assets/tree2.png');
       this.load.image('lake', 'assets/lake.png');
       this.load.image('chili', 'assets/chili.png');
       this.load.spritesheet('player_body', 'assets/player.png', 120, 120);

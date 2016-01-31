@@ -4,6 +4,8 @@
   var Chili = require('./../chili');
   var Lake = require('./../obstacles/lake');
   var Rock = require('./../obstacles/rock');
+  var Tree1 = require('./../obstacles/tree1');
+  var Tree2 = require('./../obstacles/tree2');
   var Player = require('../player');
 
   function Game() {
@@ -98,13 +100,17 @@
       setTimeout(this.spawnChili.bind(this), Math.random() * 2000 + 500);
     },
     spawnObstacle: function() {
-      var obs = [Rock, Rock, Rock, Rock, Rock, Rock, Rock, Rock, Rock, Rock, Lake];
+      var obs = [Rock, Rock, Tree1, Rock, Rock, Tree2, Rock, Tree2, Rock, Rock, Lake, Tree1, Tree2, Tree1];
       var choice = obs[Math.floor(Math.random() * obs.length)];
       this.obstacles.add(new choice(this.game));
       if (choice === Rock) {
         setTimeout(this.spawnObstacle.bind(this), 1000);
       } else if (choice === Lake) {
         setTimeout(this.spawnObstacle.bind(this), 3000);
+      } else if (choice === Tree1) {
+        setTimeout(this.spawnObstacle.bind(this), 1500);
+      } else if (choice === Tree2) {
+        setTimeout(this.spawnObstacle.bind(this), 1500);
       }
     },
     obstacleCollisionHandler: function(player, obstacle) {
