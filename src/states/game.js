@@ -11,11 +11,12 @@
   function Game() {
     this.lastFrame = new Date().getTime();
     this.speed = 200;
-
   }
 
   Game.prototype = {
     create: function() {
+      hideQrcode();
+
       var self = this;
       this.game.physics.startSystem(Phaser.Physics.ARCADE);
       this.game.physics.setBoundsToWorld();

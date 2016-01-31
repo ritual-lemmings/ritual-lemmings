@@ -9,6 +9,8 @@
 
   Menu.prototype = {
     create: function() {
+      showQrcode();
+
       this.input.onUp.addOnce(this.start, this);
       socket.on('playerConnect', this.onConnect.bind(this));
       socket.on('playerDisconnect', this.onDisconnect.bind(this));
