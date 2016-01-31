@@ -24,6 +24,8 @@
     "fastclick": "^1.0.6",
     "jade": "^1.11.0",
     "koa": "^2.0.0-alpha.3",
+    "koa-cache-control": "^1.0.0",
+    "koa-compress": "^1.0.8",
     "koa-convert": "^1.2.0",
     "koa-mount": "^1.3.0",
     "koa-static": "^2.0.0",

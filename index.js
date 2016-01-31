@@ -1,5 +1,7 @@
 import { Server } from 'http';
 import Koa from 'koa';
+import cache from 'koa-cache-control';
+import compress from 'koa-compress';
 import route from 'koa-route';
 import mount from 'koa-mount';
 import convert from 'koa-convert';
@@ -12,6 +14,11 @@ import Slave from './lib/slave';
 
 
 const app = new Koa();
+
+app.use(convert(compress()));
+app.use(convert(cache({
+  maxAge: 60,
+})));
 
 // app.use(convert(mount('/src', serve(__dirname))));
 
