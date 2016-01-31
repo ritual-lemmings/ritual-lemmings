@@ -8,6 +8,8 @@
       this.direction = 0;
 
       this.animations.add('walk');
+      this.animations.add('walk', [0, 1, 2, 3, 4, 5, 6, 7]);
+      this.animations.add('crash', [8, 9, 10, 11, 12, 13, 14, 15]);
       this.animations.play('walk', 8, true);
       this.tint = parseInt(color, 16);
       this.game.physics.arcade.enable(this);
@@ -16,7 +18,8 @@
       this.body.setSize(60, 60, 20, 60);
 
       this.playerMask = this.game.add.sprite(0, 0, 'player_mask');
-      this.playerMask.animations.add('walk');
+      this.playerMask.animations.add('walk', [0, 1, 2, 3, 4, 5, 6, 7]);
+      this.playerMask.animations.add('crash', [8, 9, 10, 11, 12, 13, 14, 15]);
       this.playerMask.animations.play('walk', 8, true);
 
       this.addChild(this.playerMask);
