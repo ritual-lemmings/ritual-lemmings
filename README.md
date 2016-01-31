@@ -8,6 +8,8 @@ Yes, really in the same physical place. No, no need for controllers. Plain simpl
 
 A project for the global game jam 2016, built with love in Munich (WERK1), http://globalgamejam.org/2016/games/ritualemmings.
 
+Special thanks to all the people involved in organizing or sponsoring this awesome event, thanks!
+
 ## Description
 
 In this multiplayer experience, our cute little lemmings are having their ritualrace to the volcano. The player controls his lemming with his smartphone through swiping. Be faster than your friends to become the honorable lemming to die first in the volcano.
