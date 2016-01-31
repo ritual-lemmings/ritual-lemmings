@@ -37,3 +37,9 @@ Web! phaser.io, node.js, websockets
 6) Start the server
 
     npm start
+
+7) Open game in your webbrowser, first who connects will be master (the one for the big tv aka display only):
+
+    open 127.0.0.1:3000
+    
+You should rather use your local network IP address instead. Because the QR code for clients to connect is generated based on the url you used to access the server (and they won't find you on localhost).
