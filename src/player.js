@@ -96,7 +96,7 @@
         this.playerMask.animations.play('walk', 8, true);
       }, this);
       if (this.position.x > 0) {
-        this.game.add.tween(this).to( { x: this.position.x -120 }, 500, Phaser.Easing.Cubic.Out, true);
+        this.game.add.tween(this).to( { x: this.position.x - 240 }, 500, Phaser.Easing.Cubic.Out, true);
       }
       var choice = this.crashSounds[Math.floor(Math.random() * this.crashSounds.length)];
       choice.play();

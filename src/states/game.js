@@ -98,7 +98,7 @@
     */
     spawnChili: function() {
       this.chilis.add(new Chili(this.game));
-      setTimeout(this.spawnChili.bind(this), Math.random() * 2000 + 500);
+      setTimeout(this.spawnChili.bind(this), Math.random() * 2000 + 100);
     },
     spawnObstacle: function() {
       var obs = [Rock, Rock, Tree1, Rock, Rock, Tree2, Rock, Tree2, Rock, Rock, Lake, Tree1, Tree2, Tree1];
