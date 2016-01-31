@@ -76,7 +76,9 @@
         this.animations.play('walk', 8, true);
         this.playerMask.animations.play('walk', 8, true);
       }, this);
-      this.game.add.tween(this).to( { x: this.position.x -120 }, 500, Phaser.Easing.Cubic.Out, true);
+      if (this.position.x > 0) {
+        this.game.add.tween(this).to( { x: this.position.x -120 }, 500, Phaser.Easing.Cubic.Out, true);
+      }
     }
     this.lastCrash = other;
   };
