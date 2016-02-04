@@ -29,6 +29,8 @@ Web! phaser.io, node.js, websockets
 3) Install dependencies via npm:
 
     npm install
+    
+If `node-canvas` build should fail have a look at the [install instructions](https://github.com/Automattic/node-canvas#installation).
 
 4) Build phaser (sadly required, but we tried to provide a script, sorry windows):
 
