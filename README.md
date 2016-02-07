@@ -24,6 +24,10 @@ Web! phaser.io, node.js, websockets
 
 2) Clone or download the projects source code:
 
+    https://github.com/ritual-lemmings/ritual-lemmings/archive/master.zip
+    
+Or via `git` for our developers:
+
     git clone git@github.com:ritual-lemmings/ritual-lemmings
 
 3) Install dependencies via npm:
