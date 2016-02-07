@@ -22,9 +22,9 @@ Web! phaser.io, node.js, websockets
 
 1) Install a up to date node.js version (we used 5.x), follow instructions on https://nodejs.org/en/download/.
 
-2) Clone or download the projects source code:
+2) Download the projects source code:
 
-    https://github.com/ritual-lemmings/ritual-lemmings/archive/master.zip
+[https://github.com/ritual-lemmings/ritual-lemmings/archive/master.zip](https://github.com/ritual-lemmings/ritual-lemmings/archive/master.zip)
     
 Or via `git` for our developers:
 
